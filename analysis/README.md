@@ -74,13 +74,3 @@ O script `05_plot_tradeoffs.py` gera:
 - `tradeoff_alpha_high_discussion`: grafico de apoio para discutir se `alpha_max` alto economiza espaco, mas aumenta overflow e custo.
 
 Cada figura e salva apenas em `.png` dentro de `analysis/figures/`.
-
-## Como interpretar
-
-Use os graficos de custo de busca para comparar quantas paginas sao acessadas em media em cada configuracao. Valores menores indicam buscas mais baratas.
-
-Use os graficos de memoria para observar se `alpha_max` maior melhora a utilizacao real do espaco e se essa melhora vem acompanhada de mais paginas de overflow.
-
-Use os graficos de trade-off para discutir o equilibrio entre economia de espaco e custo de busca. Uma configuracao interessante tende a combinar alta utilizacao real, baixo overflow e poucas paginas acessadas nas buscas.
-
-A interpretacao automatica em `analysis/tables/automatic_interpretation.md` e apenas um ponto de partida. A conclusao final deve ser revisada pelo aluno e conectada aos conceitos de Hash Linear vistos na disciplina.

@@ -26,7 +26,7 @@ Exemplos do tipo de prompt utilizado foram:
 
 Os códigos gerados pela ferramenta não foram utilizados diretamente como versão final. Em vários casos, os arquivos precisaram ser corrigidos, adaptados e integrados manualmente. Fiz alterações na lógica de implementação, nos parâmetros dos experimentos, na organização dos dados, na geração dos CSVs e nos scripts de análise.
 
-**A ferramenta de IA foi usada como apoio para acelerar a escrita de rascunhos e sugerir estruturas iniciais de código, mas a integração, adaptação, execução dos experimentos, validação dos resultados e versão final do projeto foram realizadas e revisadas por mim. Oquê está alinhado com às diretrizes da Universidade Federal da Bahia para o uso ético e responsável de inteligência artificial generativa.[1]**
+**A ferramenta de IA foi usada como apoio para acelerar a escrita de rascunhos e sugerir estruturas iniciais de código, mas a integração, adaptação, execução dos experimentos, validação dos resultados e versão final do projeto foram realizadas e revisadas por mim. Isso está alinhado com às diretrizes da Universidade Federal da Bahia para o uso ético e responsável de inteligência artificial generativa.[1]**
 
 ## Referencias
 
