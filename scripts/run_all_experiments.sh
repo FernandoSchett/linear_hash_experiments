@@ -5,6 +5,7 @@ mkdir -p build
 cmake -S . -B build
 cmake --build build
 mkdir -p resultados/csv/generated
+rm -f resultados/csv/generated/*.csv
 
 python3 scripts/generate_experiments.py \
     --output-dir build/generated_experiments \
