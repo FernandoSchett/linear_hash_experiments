@@ -1,0 +1,10 @@
+build/
+resultados/csv/*.csv
+analysis/.venv/
+analysis/.matplotlib/
+*.o
+*.out
+*.exe
+.cache/
+.vscode/
+.idea/

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "p50_a075",
+  "page_size": 50,
+  "alpha_max": 0.75,
+  "initial_buckets": 4,
+  "num_records": 100000,
+  "num_successful_searches": 5000,
+  "num_unsuccessful_searches": 5000,
+  "seed": 42,
+  "output_csv": "resultados/csv/p50_a075.csv"
+}
