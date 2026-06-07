@@ -28,4 +28,6 @@ Os códigos gerados pela ferramenta não foram utilizados diretamente como vers�
 
 **A ferramenta de IA foi usada como apoio para acelerar a escrita de rascunhos e sugerir estruturas iniciais de código, mas a integração, adaptação, execução dos experimentos, validação dos resultados e versão final do projeto foram realizadas e revisadas por mim. Oquê está alinhado com às diretrizes da Universidade Federal da Bahia para o uso ético e responsável de inteligência artificial generativa.[1]**
 
+## Referencias
+
 [1] UNIVERSIDADE FEDERAL DA BAHIA. Guia para uso ético e responsável da inteligência artificial generativa na Universidade Federal da Bahia. Salvador: UFBA, 2025.
