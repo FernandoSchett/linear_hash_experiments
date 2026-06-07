@@ -1,5 +1,6 @@
 build/
-resultados/csv/*.csv
+resultados/csv/
+analysis/figures/*.pdf
 analysis/.venv/
 analysis/.matplotlib/
 *.o
@@ -8,3 +9,4 @@ analysis/.matplotlib/
 .cache/
 .vscode/
 .idea/
+__pycache__/

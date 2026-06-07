@@ -8,15 +8,15 @@ O projeto implementa Hash Linear em memoria principal, simulando paginas/buckets
 
 ```text
 .
-├── CMakeLists.txt
-├── .gitignore
-├── README.md
-├── main.cpp
-├── experiments/
-├── scripts/
-├── resultados/csv/
-├── src/
-└── libs/
+|-- CMakeLists.txt
+|-- .gitignore
+|-- README.md
+|-- main.cpp
+|-- experiments/
+|-- scripts/
+|-- resultados/csv/
+|-- src/
+`-- libs/
 ```
 
 `libs` contem a estrutura generica de Hash Linear. `src` contem configuracao, geracao de chaves, execucao dos experimentos e escrita dos CSVs. `main.cpp` apenas recebe o caminho do JSON e dispara a execucao.
@@ -40,7 +40,13 @@ Para executar todos:
 bash scripts/run_all_experiments.sh
 ```
 
-Os arquivos CSV serao criados em `resultados/csv/`.
+O script gera automaticamente as configuracoes em `build/generated_experiments/` e executa:
+
+- `P = 10, 20, ..., 100`
+- `alpha_max = 0.40, 0.50, 0.60, 0.75, 0.80, 0.90, 0.95`
+- `seed = 42, 43, 44, 45, 46`
+
+No total, sao 350 execucoes. Os arquivos CSV serao criados em `resultados/csv/generated/`.
 
 ## Teste pequeno recomendado
 

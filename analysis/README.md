@@ -1,6 +1,6 @@
 # Analise dos Experimentos de Hash Linear
 
-Este modulo Python consolida os CSVs produzidos pelo experimento em C++, valida os dados, gera tabelas para relatorio e cria graficos em PNG e PDF.
+Este modulo Python consolida os CSVs produzidos pelo experimento em C++, valida os dados, gera tabelas para relatorio e cria graficos em PNG.
 
 ## Instalar dependencias
 
@@ -35,11 +35,12 @@ python3 analysis/scripts/06_generate_report_tables.py
 
 ## Saidas geradas
 
-- `analysis/data/processed/master_results.csv`: tabela mestre com todas as colunas dos experimentos.
-- `analysis/tables/summary_metrics.csv`: tabela resumida com as metricas principais.
-- `analysis/tables/table_search_costs.csv`: tabela de custo medio de busca.
-- `analysis/tables/table_memory.csv`: tabela de memoria, utilizacao e overflow.
-- `analysis/tables/table_splits.csv`: tabela com splits, nivel final e ponteiro final.
+- `analysis/data/processed/raw_results.csv`: tabela bruta com uma linha por seed.
+- `analysis/data/processed/master_results.csv`: tabela mestre agregada por `P` e `alpha_max`, com medias e colunas `_std`.
+- `analysis/tables/summary_metrics.csv`: tabela resumida com as metricas principais, medias e desvios.
+- `analysis/tables/table_search_costs.csv`: tabela de custo medio de busca em formato `media +/- desvio`.
+- `analysis/tables/table_memory.csv`: tabela de memoria, utilizacao e overflow em formato `media +/- desvio`.
+- `analysis/tables/table_splits.csv`: tabela com splits, nivel final e ponteiro final em formato `media +/- desvio`.
 - `analysis/tables/automatic_interpretation.md`: interpretacao automatica inicial em portugues.
 
 ## Figuras
@@ -66,7 +67,7 @@ O script `05_plot_tradeoffs.py` gera:
 - `tradeoff_alpha_space_overflow`: comparacao entre utilizacao real e overflow por `alpha_max`.
 - `tradeoff_alpha_high_discussion`: grafico de apoio para discutir se `alpha_max` alto economiza espaco, mas aumenta overflow e custo.
 
-Cada figura e salva em `.png` e `.pdf` dentro de `analysis/figures/`.
+Cada figura e salva apenas em `.png` dentro de `analysis/figures/`.
 
 ## Como interpretar
 

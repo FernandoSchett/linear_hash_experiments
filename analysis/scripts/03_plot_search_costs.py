@@ -13,11 +13,24 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import FIGURES_DIR, ensure_output_dirs, load_master_or_raw, save_figure, sort_results  # noqa: E402
 
 
+def std_values(df, column: str):
+    std_column = f"{column}_std"
+    return df[std_column] if std_column in df.columns else None
+
+
 def plot_lines(df, column: str, title: str, ylabel: str, output_name: str) -> None:
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(10, 5.5))
     for page_size, group in df.groupby("page_size_P"):
         group = group.sort_values("alpha_max")
-        ax.plot(group["alpha_max"], group[column], marker="o", linewidth=2, label=f"P={page_size}")
+        ax.errorbar(
+            group["alpha_max"],
+            group[column],
+            yerr=std_values(group, column),
+            marker="o",
+            linewidth=1.8,
+            capsize=3,
+            label=f"P={page_size}",
+        )
 
     ax.set_title(title)
     ax.set_xlabel("alpha_max")
@@ -33,17 +46,22 @@ def plot_success_vs_unsuccess(df) -> None:
     x = np.arange(len(labels))
     width = 0.38
 
-    fig, ax = plt.subplots(figsize=(11, 5.5))
+    fig_width = max(14, len(labels) * 0.32)
+    fig, ax = plt.subplots(figsize=(fig_width, 6))
     ax.bar(
         x - width / 2,
         df["successful_search_avg_page_accesses"],
         width,
+        yerr=std_values(df, "successful_search_avg_page_accesses"),
+        capsize=2,
         label="Busca com sucesso",
     )
     ax.bar(
         x + width / 2,
         df["unsuccessful_search_avg_page_accesses"],
         width,
+        yerr=std_values(df, "unsuccessful_search_avg_page_accesses"),
+        capsize=2,
         label="Busca sem sucesso",
     )
 
@@ -51,7 +69,7 @@ def plot_success_vs_unsuccess(df) -> None:
     ax.set_xlabel("Configuracao")
     ax.set_ylabel("Paginas acessadas em media")
     ax.set_xticks(x)
-    ax.set_xticklabels(labels)
+    ax.set_xticklabels(labels, rotation=90)
     ax.grid(True, axis="y", linestyle="--", alpha=0.35)
     ax.legend()
     save_figure(fig, "search_success_vs_unsuccess")
@@ -60,7 +78,13 @@ def plot_success_vs_unsuccess(df) -> None:
 
 def plot_heatmap(df, column: str, title: str, output_name: str) -> None:
     pivot = df.pivot(index="page_size_P", columns="alpha_max", values=column).sort_index()
-    fig, ax = plt.subplots(figsize=(6.5, 4.5))
+    std_column = f"{column}_std"
+    pivot_std = (
+        df.pivot(index="page_size_P", columns="alpha_max", values=std_column).sort_index()
+        if std_column in df.columns
+        else None
+    )
+    fig, ax = plt.subplots(figsize=(8.5, 6))
     image = ax.imshow(pivot.values, aspect="auto", cmap="viridis")
 
     ax.set_title(title)
@@ -73,7 +97,10 @@ def plot_heatmap(df, column: str, title: str, output_name: str) -> None:
 
     for i in range(pivot.shape[0]):
         for j in range(pivot.shape[1]):
-            ax.text(j, i, f"{pivot.values[i, j]:.2f}", ha="center", va="center", color="white")
+            text = f"{pivot.values[i, j]:.2f}"
+            if pivot_std is not None:
+                text = f"{text}\n\u00b1{pivot_std.values[i, j]:.2f}"
+            ax.text(j, i, text, ha="center", va="center", color="white", fontsize=7)
 
     fig.colorbar(image, ax=ax, label="Paginas acessadas em media")
     save_figure(fig, output_name)

@@ -7,8 +7,10 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from config import (  # noqa: E402
     EXPECTED_COLUMNS,
     MASTER_RESULTS_PATH,
+    RAW_RESULTS_PATH,
     SUMMARY_COLUMNS,
     SUMMARY_METRICS_PATH,
+    aggregate_results,
     ensure_output_dirs,
     load_raw_results,
     sort_results,
@@ -24,12 +26,16 @@ def main() -> int:
         print(f"[ERRO] Colunas ausentes: {missing_columns}")
         return 1
 
-    master = sort_results(df[EXPECTED_COLUMNS].copy())
+    raw = sort_results(df[EXPECTED_COLUMNS].copy())
+    raw.to_csv(RAW_RESULTS_PATH, index=False)
+
+    master = aggregate_results(raw)
     master.to_csv(MASTER_RESULTS_PATH, index=False)
 
     summary = master[SUMMARY_COLUMNS].copy()
     summary.to_csv(SUMMARY_METRICS_PATH, index=False)
 
+    print(f"[OK] Tabela bruta salva em: {RAW_RESULTS_PATH}")
     print(f"[OK] Tabela mestre salva em: {MASTER_RESULTS_PATH}")
     print(f"[OK] Tabela resumida salva em: {SUMMARY_METRICS_PATH}")
     return 0
