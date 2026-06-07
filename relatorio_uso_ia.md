@@ -10,7 +10,7 @@ Um exemplo do tipo de prompt utilizado foi:
 
 Esse processo foi aplicado em seções como introdução, fundamentação teórica, metodologia, resultados e conclusão.
 
-Após as sugestões geradas pela ferramenta, revisei manualmente o texto para verificar se o conteúdo técnico continuava correto, se os resultados apresentados correspondiam aos experimentos executados e se nenhuma informação incorreta havia sido adicionada. A versão final do relatório foi, portanto, revisada e validada por mim.
+Após as sugestões geradas pela ferramenta, revisei manualmente o texto para verificar se o conteúdo técnico continuava correto.
 
 ## 2. Uso de IA na implementação
 
@@ -20,12 +20,12 @@ Primeiro, defini a estrutura geral que o projeto deveria ter (src,main,cpp,libs.
 
 Exemplos do tipo de prompt utilizado foram:
 
-> Gere um arquivo C++ para implementar a estrutura principal de Hash Linear, considerando páginas primárias, páginas de overflow, inserção de chaves, busca e contabilização de acessos simulados a disco.
+> Gere uma classe em C++ responsável por escrever em CSV o resultado de um experimento. A classe deve receber um caminho de saída e uma estrutura ExperimentResult, criar o diretório caso necessário e salvar métricas como tamanho da página, fator de carga máximo, número de registros inseridos, número de páginas primárias, páginas de overflow, fator de carga final, utilização real de espaço, número de splits, acessos totais e médios em inserções e buscas, além dos tempos de execução.
 
-> Gere um script Python para ler os arquivos CSV produzidos pelos experimentos, consolidar as métricas e gerar gráficos comparando custo de busca, utilização de espaço e páginas de overflow.
+> Gere uma classe em C++ responsável por executar um experimento com Hash Linear. A classe deve receber uma configuração com número de registros, tamanho da página, fator de carga máximo, número de buscas com sucesso e sem sucesso, gerar chaves aleatórias únicas, inserir as chaves na estrutura, executar buscas por chaves existentes e inexistentes, contabilizar acessos simulados a páginas, medir tempos de execução e salvar os resultados em CSV.
 
 Os códigos gerados pela ferramenta não foram utilizados diretamente como versão final. Em vários casos, os arquivos precisaram ser corrigidos, adaptados e integrados manualmente. Fiz alterações na lógica de implementação, nos parâmetros dos experimentos, na organização dos dados, na geração dos CSVs e nos scripts de análise.
 
-Também revisei os resultados produzidos, executei os experimentos, verifiquei os arquivos de saída e ajustei o código quando os resultados não estavam coerentes com o comportamento esperado da estrutura de Hash Linear.
+**A ferramenta de IA foi usada como apoio para acelerar a escrita de rascunhos e sugerir estruturas iniciais de código, mas a integração, adaptação, execução dos experimentos, validação dos resultados e versão final do projeto foram realizadas e revisadas por mim. Oquê está alinhado com às diretrizes da Universidade Federal da Bahia para o uso ético e responsável de inteligência artificial generativa.[1]**
 
-Assim, a ferramenta de IA foi usada como apoio para acelerar a escrita de rascunhos e sugerir estruturas iniciais de código, mas a integração, adaptação, execução dos experimentos, validação dos resultados e versão final do projeto foram realizadas e revisadas por mim.
+[1] UNIVERSIDADE FEDERAL DA BAHIA. Guia para uso ético e responsável da inteligência artificial generativa na Universidade Federal da Bahia. Salvador: UFBA, 2025.
