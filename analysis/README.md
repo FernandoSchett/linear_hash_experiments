@@ -11,6 +11,12 @@ pip install -r requirements.txt
 
 ## Executar
 
+A partir da raiz do projeto, use o script unico:
+
+```bash
+bash scripts/run_analysis.sh
+```
+
 A partir da pasta `analysis/`:
 
 ```bash
